@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<title>VTU RESULT ANALYSIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">FETCH RESULTS</a>
+  <a href="#" class="w3-bar-item w3-button">COLLEGE POSITION</a>
+  <a href="#" class="w3-bar-item w3-button">DEPARTMENT RESULTS</a>
+</div>
+
+<div id="main">
+
+<div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container">
+    <h1>VTU RESULT ANAYSIS</h1>
+  </div>
+</div>
+
+
+<div class="container w3-animate-right">    
+        <div id="usnbox" style="margin-top:50px;margin-left: 0%;" class="mainbox col-md-8 col-md-offset-3 col-sm-6 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Search For Results</div>
+                     
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal" role="form">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="usn" type="text" class="form-control" name="username" value="" placeholder="enter you usn">                                        
+                                    </div>
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                                    </div>
+                                </div>                             
+                          </form>  
+                        </div>                     
+                      </div>  
+                  </div>
+            </div>
+ <div class="container w3-animate-right">    
+        <div id="usnbox" style="margin-top:50px;margin-left: 0%;" class="mainbox col-md-8 col-md-offset-3 col-sm-6 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Search For Results</div>
+                     
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+                     <a type="button" name="button" id="1" value="sem1" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 1</a>
+                     <a type="button" value="sem2" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 2</a>
+                     <a type="button" value="sem3" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 3</a>
+                     <a type="button" value="sem4" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 4</a>
+                     <a type="button" value="sem5" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 5</a>
+                     <a type="button" value="sem6" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 6</a>
+                     <a type="button" value="sem7" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 7</a>
+                     <a type="button" value="sem8" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 8</a>
+                   </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+    $("a").click(function(){
+        $sem=$(this).text();
+         $.ajax("getresults.php",
+    {
+        sem=$sem;
+    },
+    });
+});
+</script>
+
+<div class='link' data-id="$idd" >TEXT</div>
+
+
+
+
+<div class="container" id="div1"></div>
+
+
+
+
+
+</div>
+
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "30%";
+  document.getElementById("mySidebar").style.width = "30%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+
+
+</script>
+
+</body>
+</html>
