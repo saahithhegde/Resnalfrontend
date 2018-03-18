@@ -1,4 +1,7 @@
- <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<?php
+$sem = $_POST["sem"]; 
+?>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -20,7 +23,7 @@
 
 <div class="container-fluid">
 <div class="limiter">
-<h2>Rank Holders Top 10</h2>
+<h2>Rank Holders Top 10 For Semester <?php echo $sem; ?></h2>
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table100 ver1 m-b-110">
@@ -64,13 +67,13 @@
 <script>
     new RGraph.SVG.Pie({
         id: 'chart-container',
-        data: [1,1,1,1,1,1,1,1],
+        data: [1,1],
         options: {
             tooltipsEvent: 'mousemove',
             highlightStyle: 'outline',
             labelsSticksHlength: 50,
-            tooltips: ['Alf','Berty','Craig','Dean','Elgar','Fliss','Lucy','Paul'],
-            key: ['Bob','Rik','Alf','Hal','Kev','Tom','Mat','Pam']
+            tooltips: ['50%','50%'],
+            key: ['fail','pass']
         }
     }).draw();
 </script>

@@ -1,3 +1,16 @@
+<h2><?php
+$usn= $_POST["usn"]; 
+if(strlen($usn)!=10)
+{
+	echo("Ivalid usn");
+}
+else
+{
+echo $usn;
+}
+?></h2>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -52,6 +65,3 @@
 
 
 </div>
-
-
-data-toggle="modal" data-target="#myModal"
