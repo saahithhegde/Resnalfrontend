@@ -11,9 +11,10 @@
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">FETCH RESULTS</a>
-  <a href="#" class="w3-bar-item w3-button">COLLEGE POSITION</a>
-  <a href="#" class="w3-bar-item w3-button">DEPARTMENT RESULTS</a>
+  <a href="#" class="w3-bar-item w3-button">VTU RESULTS</a>
+  <a href="deptres.html" class="w3-bar-item w3-button">DEPARTMENT RESULTS</a>
+  <a href="collegepos.php" class="w3-bar-item w3-button">COLLEGE POSITION</a>
+  <a href="crawlerapi.php" class="w3-bar-item w3-button">FETCH RESULTS</a>
 </div>
 
 <div id="main">
@@ -49,7 +50,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <button id="btn-login"  class="btn btn-success"  data-toggle="modal" data-target="#myModal">Login  </button>
+                                      <button id="btn-login"  class="btn btn-success"  data-toggle="modal" data-target="#myModal">Get Result</button>
                                     </div>
                                 </div>                              
                         </div>                     
@@ -64,15 +65,18 @@
                      
                     </div>     
 
-                    <div style="padding-top:30px" class="panel-body" >
-                     <a type="button" name="button" id="1" value="sem1" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 1</a>
-                     <a type="button" value="sem2" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 2</a>
-                     <a type="button" value="sem3" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 3</a>
-                     <a type="button" value="sem4" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 4</a>
-                     <a type="button" value="sem5" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 5</a>
-                     <a type="button" value="sem6" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 6</a>
-                     <a type="button" value="sem7" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 7</a>
-                     <a type="button" value="sem8" style="margin-top:1%;margin-left: 2%;" class="btn btn-primary">Semester 8</a>
+                  <div style="padding-top:30px" class="panel-body" >
+                   <ul class="nav nav-tabs">
+                   <li class="active"><a data-toggle="tab" href="#home">sem 1</a></li>
+                   <li><a data-toggle="tab">sem 2</a></li>
+                   <li><a data-toggle="tab">sem 3</a></li>
+                   <li><a data-toggle="tab">sem 4</a></li>
+                   <li><a data-toggle="tab">sem 5</a></li>
+                   <li><a data-toggle="tab">sem 6</a></li>
+                   <li><a data-toggle="tab">sem 7</a></li>
+                   <li><a data-toggle="tab">sem 8</a></li>
+                   </ul>
+
                    </div>
             </div>
         </div>
@@ -102,7 +106,7 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-    $("a").click(function(){
+    $("li").click(function(){
         var sem=$(this).text();
      $.ajax({
         method:'POST',

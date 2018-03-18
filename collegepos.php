@@ -38,11 +38,12 @@
   </div>
 </div>
 
+
 <div class="container w3-animate-right">    
         <div id="usnbox" style="margin-top:50px;margin-left: 0%;" class="mainbox col-md-8 col-md-offset-3 col-sm-6 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
-                        <div class="panel-title">Get Complete Results</div>
+                        <div class="panel-title">Get College Position</div>
                      
                     </div>     
 
@@ -51,8 +52,8 @@
                        
                                     
                             <div style="margin-bottom: 25px" class="select2">
-                                        <span class="select2-group-addon"><i class="glyphicon glyphicon glyphicon-download-alt"></i></span>
-                                        <select id="sem" type="text" class="form-control" name="selectsem"> 
+                                       
+                                        <select id="sem" type="text" class="form-control" name="selectsem" required value=""> 
                                             <option class="form-control" value="sem1">SEM1</option>
                                             <option class="form-control" value="sem2">SEM2</option>
                                             <option class="form-control" value="sem3">SEM3</option>
@@ -61,15 +62,29 @@
                                             <option class="form-control" value="sem6">SEM6</option>
                                             <option class="form-control" value="sem7">SEM7</option>
                                             <option class="form-control" value="sem8">SEM8</option>
-                                            </select>       
 
+                                            </select>    
+                                         
                                     </div>
+                                              <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <a id="btn-login1" class="btn btn-success">Get subjects</a>
+                                    </div>
+                                </div>
+
+                                     <div style="margin-top: 25px" class="select2 form-group">
+                                         <select id="sems" type="text" class="form-control" name="selectsem">
+                                          
+                                         </select>
+                                     </div>
 
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                                      <a id="btn-login2" class="btn btn-success">Login  </a>
                                     </div>
                                 </div>                             
                           
@@ -77,13 +92,38 @@
                       </div>  
                   </div>
             </div>
+            <script>
+$(document).ready(function(){
+    $("#btn-login1").click(function(){
+        var sem=$("#sem").val();
+     $.ajax({
+        method:'POST',
+        url: 'getsubject.php',
+        data: {'sem':sem}
+    }).done(function (data) {
+    $('#sems').html(data);
+    });
+    });
+});
+</script>
 
+<script>
+$(document).ready(function(){
+    $("li").click(function(){
+        var sem=$(this).text();
+     $.ajax({
+        method:'POST',
+        url: 'getresult.php',
+        data: {'sem':sem}
+    }).done(function (data) {
+    $('#div1').html(data);
+    });
+    });
+});
+</script>
 
-
-            <div id="div1"></div>
 
 </div>
-
 
 <script>
 function w3_open() {
@@ -97,16 +137,6 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }
-$(document).ready(function(){
-    $("#btn-login").click(function(){
-        var sem=$("#sem").val();
-     $.ajax({
-        method:'POST',
-        url: 'gettotalresults.php',
-        data: {'sem':sem}
-    }).done(function (data) {
-    $('#div1').html(data);
-    });
-    });
-});
+
+
 </script>
