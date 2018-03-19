@@ -51,7 +51,7 @@
     
                        
                                     
-                            <div style="margin-bottom: 25px" class="select2">
+                            <div style="margin-top: 25px" class="select2">
                                        
                                         <select id="sem" type="text" class="form-control" name="selectsem" required value=""> 
                                             <option class="form-control" value="sem1">SEM1</option>
@@ -66,32 +66,33 @@
                                             </select>    
                                          
                                     </div>
-                                              <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
-
+                                              
+                               
+                                  <div style="margin-top:20px" class="form-group">
                                     <div class="col-sm-12 controls">
                                       <a id="btn-login1" class="btn btn-success">Get subjects</a>
                                     </div>
                                 </div>
-
-                                     <div style="margin-top: 25px" class="select2 form-group">
-                                         <select id="sems" type="text" class="form-control" name="selectsem">
-                                          
+                                      <br>
+                                     <div style="margin-top: 45px" class="form-group">
+                                         <select id="subs" type="text" class="form-control" name="selectsem">
                                          </select>
                                      </div>
 
-                                <div style="margin-top:10px" class="form-group">
+                                <div style="margin-top:20px" class="form-group">
                                     <!-- Button -->
-
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login2" class="btn btn-success">Login  </a>
+                                      <a id="btn-login2" class="btn btn-success">GET ANALYSIS</a>
                                     </div>
                                 </div>                             
                           
                         </div>                     
                       </div>  
                   </div>
+
+         <div id="div1" class="container-fluid"></div>
             </div>
+
             <script>
 $(document).ready(function(){
     $("#btn-login1").click(function(){
@@ -101,7 +102,7 @@ $(document).ready(function(){
         url: 'getsubject.php',
         data: {'sem':sem}
     }).done(function (data) {
-    $('#sems').html(data);
+    $('#subs').html(data);
     });
     });
 });
@@ -109,12 +110,14 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-    $("li").click(function(){
-        var sem=$(this).text();
+    $("#btn-login2").click(function(){
+        var sub=$("#subs").val();
+        var sem=$("#sem").val();
      $.ajax({
         method:'POST',
-        url: 'getresult.php',
-        data: {'sem':sem}
+        url: 'getanalysis.php',
+        data: {'subs':sub,
+                'sem':sem}
     }).done(function (data) {
     $('#div1').html(data);
     });

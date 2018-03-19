@@ -1,12 +1,15 @@
 <h2><?php
 $usn= $_POST["usn"]; 
+
 if(strlen($usn)!=10)
 {
 	echo("Ivalid usn");
 }
 else
 {
-echo $usn;
+   
+   $usn=strtoupper($usn);
+   echo("Results:".$usn);
 }
 ?></h2>
 
@@ -35,28 +38,35 @@ echo $usn;
                     <table data-vertable="ver1">
                         <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" data-column="column1">usn</th>
-                                <th class="column100 column2" data-column="column2">sub1</th>
-                                <th class="column100 column3" data-column="column3">sub2</th>
-                                <th class="column100 column4" data-column="column4">sub3</th>
-                                <th class="column100 column5" data-column="column5">sub4</th>
-                                <th class="column100 column6" data-column="column6">sub5</th>
-                                <th class="column100 column7" data-column="column7">sub6</th>
-                                <th class="column100 column8" data-column="column8">sub7</th>
+                                <th class="column100 column1" data-column="column1">Subject Code</th>
+                                <th class="column100 column2" data-column="column2">Internals</th>
+                                <th class="column100 column3" data-column="column3">Externals</th>
+                                <th class="column100 column4" data-column="column4">Total Marks</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="row100">
-                                <td class="column100 column1" data-column="column1">1bi15cs135</td>
-                                <td class="column100 column2" data-column="column2">100</td>
-                                <td class="column100 column3" data-column="column3">100</td>
-                                <td class="column100 column4" data-column="column4">100</td>
-                                <td class="column100 column5" data-column="column5">100</td>
-                                <td class="column100 column6" data-column="column6">100</td>
-                                <td class="column100 column7" data-column="column7">100</td>
-                                <td class="column100 column8" data-column="column8">100</td>
-                            </tr>
+                             <?php
+                                
+                                $database= new SQLite3("resanal.db");
+                                $sql='select * from Marks where USN="'.$usn.'";';
+                                $result = $database->query($sql);
+                             
+                                while ($row =$result->fetchArray()) 
+                                { 
 
+                                ?>
+                               
+                            <tr class="row100">
+                                <td class="column100 column1" data-column="column1"><?php echo $row["Sub_code"]; ?></td>
+                                <td class="column100 column2" data-column="column2"><?php echo $row["internals"]; ?></td>
+                                <td class="column100 column3" data-column="column3"><?php echo $row["externals"]; ?></td>
+                                <td class="column100 column4" data-column="column4"><?php echo $row["total_marks"]; ?></td>
+
+                            </tr>
+                                <?php
+                                
+                                  }
+                                 ?>
 
                         </tbody>
 
